@@ -2,13 +2,14 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser()
 parser.add_argument("-b", "--basic",
-                    help="Mostra "Olá mundo" na tela",
+                    help="Mostra 'Olá mundo' na tela",
                     type=str, #tipo do argumento
                     metavar="STRING", 
                     #default="Olá Mundo", #valor padrão
                     required=False,
                     #nargs="+" #recebe mais de um valor
                     action="append")
+
 parser.add_argument("-v", "--verbose",
                     help="Mostra logs",
                     type=str, #tipo do argumento
