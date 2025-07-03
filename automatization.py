@@ -2,6 +2,9 @@ from pathlib import Path
 from time import sleep
 from selenium import wbdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 ROOT_FOLDER = Path(__file__).parent
 CHROMEDRIVER_EXEC = ROOT_FOLDER / "drivers" / "chromedriver.exe"
@@ -27,4 +30,12 @@ if __name__ == "__main__":
     options = ("--disable-gpu", "--no-sandbox")
     browser = make_chrome_browser(*options)
 
-chrome_browser.get("https://www.google.com.br/")
+    browser.get("https://www.google.com.br/")
+
+    search_input = WebDriverWait(browser, TIME_TO_WAIT).until(
+        EC.presence_of_element_located(
+            (By.NAME, "q")
+        )
+    )
+
+    search_input.send_keys("Hello World!")
