@@ -39,3 +39,8 @@ if __name__ == "__main__":
     )
 
     search_input.send_keys("Hello World!")
+    serarch_input.send_keys(Keys.ENTER)
+
+    results = browser.find_element(By.ID, "search")
+    links = browser.find_elements(By.TAG_NAME, "a")
+    links[0].click()
